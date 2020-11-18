@@ -13,10 +13,28 @@ var todoList = [
 ];
 
 // GET /api/todos
+app.get('/api/todos', (req,res) => {
+    res.send(todoList)
+
+})
 
 // GET /api/todos/:id
+app.get('/api/todos/:id', (req,res) => {
+    const id = req.params.id;
+})
+
 
 // POST /api/todos
+app.post('/api/todos', (req,res) => {
+    todoList.push({
+        id: Math.floor(Math.random() * 100),
+        todo: req.body.todo
+    })
+
+    res.status(200).json({
+        message: "todolist was added"
+    })
+})
 
 // PUT /api/todos/:id
 
